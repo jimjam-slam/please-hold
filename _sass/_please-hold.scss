@@ -7,3 +7,44 @@
     color: red;
     text-align: center;
 }
+
+#ph-quiz
+{
+    
+    text-align: center;
+    
+    // all quiz buttons 
+    div
+    {
+        font-family: $font-header;
+        font-size: 1.25em;
+        display: block;
+        margin: 10px auto;
+        text-transform: uppercase;
+    }
+}
+
+/* button styles */
+.btn
+{
+    &-red
+    {
+        color: #fff;
+        border: 2px #900;
+        background: #c00;
+    }
+
+    &-blue
+    {
+        color: #fff;
+        border: 2px #009;
+        background: #00c;
+    }
+
+    &-green
+    {
+        color: #fff;
+        border: 2px #090;
+        background: #0c0;
+    }
+}

@@ -8,8 +8,6 @@ description: Track the time you waste with Centrelink.
 
 my_css: please-hold.css
 my_js: please-hold.js
-ext_js:
-  - /assets/js/jquery-3.1.1.min.js
 
 ---
 <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -20,7 +18,7 @@ ext_js:
     </a>
     <figure class="absolute-bg mast__img" style="background-image: url('/assets/{{ page.image }}');"></figure>
     <div class="mast__container projects">
-      <span><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time></span>
+      <!--<span><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time></span>-->
       <h1 itemprop="name headline">{{ page.title }}</h1>
       <h4>{{ page.description }}</h4>
       <span></span>

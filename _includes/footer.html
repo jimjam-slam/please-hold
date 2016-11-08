@@ -1,8 +1,12 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script type="text/javascript" src="{{ '/assets/js/app.js' | prepend: site.baseurl }}"></script>
 
-<!-- using any external JS libs or my own JS code for a post/page?
-     specify them in the YAML with my_js and ext_js -->
+<!-- for jquery and d3, I've chosen to try and download them from the cdn first and fallback to a local version -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    !window.jQuery && document.write('<script src="/assets/js/jquery-3.1.1.min.js"><\/script>')
+</script>
+
 {% for ext_js in page.ext_js %}
     <script type="text/javascript" src="{{ page.ext_js }}"></script>
 {% endfor %}
