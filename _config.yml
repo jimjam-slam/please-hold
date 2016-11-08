@@ -1,9 +1,9 @@
 # Site settings
-title: "Blank Project"
+title: "Please Hold"
 subtitle: "rensa.co"
 email: "me@rensa.co"
 url: http://rensa.co/blank-project
-description: "A clone of rensa.github.io with the post layout moved to index.html, for web projects that deserve their own repos. Shh, don't tell anyone!'"
+description: "Track the time you waste with Centrelink."
 twitter_username: rensa_co
 
 # paginate: 5
@@ -14,7 +14,7 @@ default_img: /assets/me.jpg
 # Profile settings
 name: James Goldie
 profile_img: /assets/me.jpg
-profile: "PhD student (climate + health). I build stuff to change feelings and explain discoveries." 
+profile: "PhD student (climate + health). I build stuff to explain science and help people." 
 social:
   facebook: https://facebook.com/rensa
   twitter: https://twitter.com/rensa_co
