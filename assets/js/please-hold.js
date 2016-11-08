@@ -63,7 +63,7 @@ var ph = (function()
 
         // get the quiz data
         console.log('Looking for quiz data.');
-        $.getJSON('{{ site.baseurl }}/assets/quiz-pleasehold.json')
+        $.getJSON("{{ '/assets/quiz-pleasehold.json' | prepend: site.baseurl }}")
             .done(function(data)
             {
                 // replace local quiz data if it's absent or older than
