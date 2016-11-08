@@ -19,9 +19,9 @@ var ph = (function()
 
         // question text
         $('#ph-quiz').append(
-            '<p id="q_text">' +
+            '<h2 id="q_text">' +
             ph.qdat.questions[qid].q_text +
-            '</p>');
+            '</h2>');
 
         // answers
         $.each(ph.qdat.questions[qid].answers, function(index, value)
@@ -29,7 +29,7 @@ var ph = (function()
             ans_block =
                 '<div class="btn-' + value.a_colour + ' ' +
                     value.a_id + '">\n' +
-                '\t<span class="fa ' + value.a_icon + '"></span>\n' +
+                '\t<span class="fa fa-4x ' + value.a_icon + '"></span>\n' +
                 '\t<p>' + value.a_text + '</p>\n' +
                 '</div>';
             
