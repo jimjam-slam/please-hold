@@ -1,3 +1,5 @@
+---
+---
 /* custom js to support the please hold web app
    james goldie, august 2016
 
@@ -61,7 +63,7 @@ var ph = (function()
 
         // get the quiz data
         console.log('Looking for quiz data.');
-        $.getJSON('/assets/quiz-pleasehold.json')
+        $.getJSON('{{ site.baseurl }}/assets/quiz-pleasehold.json')
             .done(function(data)
             {
                 // replace local quiz data if it's absent or older than
