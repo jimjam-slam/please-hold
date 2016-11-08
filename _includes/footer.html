@@ -11,5 +11,5 @@
     <script type="text/javascript" src="{{ page.ext_js }}"></script>
 {% endfor %}
 {% if page.my_js %}
-    <script type="text/javascript" src="/assets/js/{{ page.my_js }}"></script>
+    <script type="text/javascript" src="{{ '/assets/js/' | prepend: site.baseurl | append: page.my_js }}"></script>
 {% endif %}
