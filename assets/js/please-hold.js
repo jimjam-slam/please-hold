@@ -129,6 +129,7 @@ var ph = (function()
                 switch(value.a_type)
                 {
                     case 'button':
+                    case 'justnowbtn':
                         ans_block =
                             '<div class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
@@ -166,7 +167,7 @@ var ph = (function()
                             '</div>';
                             $('#ph-quiz').append(dt_box);
                     default:
-                        throw 'Button type unspecified for ' + value_a_id;
+                        throw 'Button type unspecified for ' + value.a_id;
                 }
                 $('#ph-quiz').append(ans_block);
                 $('#' + value.a_id).on('click touch',
