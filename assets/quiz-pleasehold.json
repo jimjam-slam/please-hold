@@ -14,7 +14,7 @@
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-phone",
-                    "goto_id":"phq-mode"
+                    "goto_qid":"phq-mode"
                 },
                 {
                     "a_id":"pha-who-jobprovider",
@@ -22,7 +22,7 @@
                     "a_type":"button",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_id":"phq-mode"
+                    "goto_qid":"phq-mode"
                 },
                 {
                     "a_id":"pha-type-other",
@@ -30,7 +30,7 @@
                     "a_type":"button",
                     "a_colour":"green",
                     "a_icon":"fa-paper-plane",
-                    "goto_id":"phq-mode"
+                    "goto_qid":"phq-mode"
                 }
             ]
         },
@@ -46,7 +46,7 @@
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-phone",
-                    "goto_id":"phq-call-dialdt"
+                    "goto_qid":"phq-call-dialdt"
                 },
                 {
                     "a_id":"pha-mode-visit",
@@ -54,15 +54,15 @@
                     "a_type":"button",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_id":""
+                    "goto_qid":""
                 },
                 {
                     "a_id":"pha-mode-other",
-                    "a_text":"Calling",
+                    "a_text":"St helse",
                     "a_type":"button",
                     "a_colour":"green",
                     "a_icon":"fa-paper-plane",
-                    "goto_id":""
+                    "goto_qid":""
                 }
             ]
         },
@@ -75,10 +75,10 @@
                 {
                     "a_id":"pha-call-dialdt-now",
                     "a_text":"Just now",
-                    "a_type":"button",
+                    "a_type":"justnowbtn",
                     "a_colour":"green",
                     "a_icon":"fa-clock-o",
-                    "goto_id":"phq-call-endhold"
+                    "goto_qid":"phq-call-endhold"
                 },
                 {
                     "a_id":"pha-call-dialdt-minsago",
@@ -86,7 +86,7 @@
                     "a_type":"numpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_id":"phq-call-endhold"
+                    "goto_qid":"phq-call-endhold"
                 },
                 {
                     "a_id":"pha-call-dialdt-earlier",
@@ -94,7 +94,7 @@
                     "a_type":"dtpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_id":"phq-call-endhold"
+                    "goto_qid":"phq-call-endhold"
                 }
             ]
         },
@@ -110,7 +110,7 @@
                     "a_type":"button",
                     "a_colour":"green",
                     "a_icon":"fa-comments",
-                    "goto_id":"phq-call-answerdt"
+                    "goto_qid":"phq-call-answerdt"
                 },
                 {
                     "a_id":"pha-call-busy",
@@ -118,7 +118,7 @@
                     "a_type":"button",
                     "a_colour":"yellow",
                     "a_icon":"fa-ban",
-                    "goto_id":"phq-call-enddt"
+                    "goto_qid":"phq-call-enddt"
                 },
                 {
                     "a_id":"pha-call-disconnected",
@@ -126,7 +126,7 @@
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-unlink",
-                    "goto_id":"phq-call-enddt"
+                    "goto_qid":"phq-call-enddt"
                 }
             ]
         },
@@ -139,10 +139,10 @@
                 {
                     "a_id":"pha-call-answerdt-now",
                     "a_text":"Just now",
-                    "a_type":"button",
+                    "a_type":"justnowbtn",
                     "a_colour":"green",
                     "a_icon":"fa-clock-o",
-                    "goto_id":"phq-call-result"
+                    "goto_qid":"phq-call-result"
                 },
                 {
                     "a_id":"pha-call-answerdt-minsago",
@@ -150,7 +150,7 @@
                     "a_type":"numpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_id":"phq-call-result"
+                    "goto_qid":"phq-call-result"
                 },
                 {
                     "a_id":"pha-call-answerdt-earlier",
@@ -158,7 +158,7 @@
                     "a_type":"dtpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_id":"phq-call-result"
+                    "goto_qid":"phq-call-result"
                 }
             ]
         },
@@ -174,7 +174,7 @@
                     "a_type":"button",
                     "a_colour":"green",
                     "a_icon":"fa-clock-o",
-                    "goto_id":"phq-wrapup"
+                    "goto_qid":"phq-wrapup"
                 },
                 {
                     "a_id":"pha-call-rsult-meh",
@@ -182,7 +182,7 @@
                     "a_type":"button",
                     "a_colour":"yellow",
                     "a_icon":"fa-clock-o",
-                    "goto_id":"phq-wrapup"
+                    "goto_qid":"phq-wrapup"
                 },
                 {
                     "a_id":"pha-call-rsult-bad",
@@ -190,7 +190,7 @@
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-clock-o",
-                    "goto_id":"phq-wrapup"
+                    "goto_qid":"phq-wrapup"
                 }
             ]
         },
@@ -203,10 +203,10 @@
                 {
                     "a_id":"pha-call-enddt-now",
                     "a_text":"Just now",
-                    "a_type":"button",
+                    "a_type":"justnowbtn",
                     "a_colour":"green",
                     "a_icon":"fa-clock-o",
-                    "goto_id":"phq-wrapup"
+                    "goto_qid":"phq-wrapup"
                 },
                 {
                     "a_id":"pha-call-enddt-minsago",
@@ -214,7 +214,7 @@
                     "a_type":"numpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_id":"phq-wrapup"
+                    "goto_qid":"phq-wrapup"
                 },
                 {
                     "a_id":"pha-call-enddt-earlier",
@@ -222,7 +222,7 @@
                     "a_type":"dtpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_id":"phq-wrapup"
+                    "goto_qid":"phq-wrapup"
                 }
             ]
         },
@@ -230,7 +230,9 @@
         "phq-wrapup":
         {
             "q_text":"Anything else you want to remember?",
-            "q_hint":"Something they said? Something you were asked to do?"
+            "q_hint":"Something they said? Something you were asked to do?",
+            "btn-colour":"red",
+            "btn-icon":"fa-check"
         }
     }
 }

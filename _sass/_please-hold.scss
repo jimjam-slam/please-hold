@@ -15,19 +15,30 @@
     font-family: $font-header;
     font-size: 1.5em;
     text-transform: uppercase;
+    /*visibility: hidden;*/
+    
+    #q_text
+    {
+        margin-bottom: 20px;
+    }
     
     // all quiz buttons 
     div
     {
         border-radius: 4px;
-        display: block;
-        max-width: 200px;
-        margin: 10px auto;
+        display: inline-block;
+        height: 140px;
         padding: 20px;
+        margin: 10px;
 
-        h2
+        p
         {
-            margin: 10px 0 0 0;
+            margin: 15px 0 0 0;
+        }
+
+        span
+        {
+            display: inline;
         }
     }
 }
