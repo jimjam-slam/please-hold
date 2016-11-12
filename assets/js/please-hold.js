@@ -286,7 +286,8 @@ var ph = (function()
                 // okay, real history items! render 'em
                 $('#ph-history').css('display', 'block');
                 $('#ph-history').append(
-                    '<h2 id="history-header">Past interactions</h2>');
+                    '<h2 id="history-header"></h2>');
+                total_time_wasted = 0;
                 $.each(ph.report_history, function(index, value)
                 {
                     // determine fa icon based on action
@@ -303,12 +304,13 @@ var ph = (function()
                             icon = 'fa-paper-plane';
                             break;
                         case 'Did something for':
-                            icon = 'thumb-tack';
+                            icon = 'fa-thumb-tack';
                             break;
                         default:
                             icon = 'fa-thumb-tack';
                     }
                     tw = value.time_wasted;
+                    total_time_wasted = total_time_wasted + tw; 
                     if (tw > 59)
                     {
                         tw = Math.round((tw / 60) * 100) / 100;
@@ -343,6 +345,29 @@ var ph = (function()
                     // write it
                     $('#ph-history').append(next_ans);
                 });
+
+                // add it up and change the header
+                if (total_time_wasted > 59)
+                {
+                    total_time_wasted =
+                        Math.round((total_time_wasted / 60) * 100) / 100;
+                    total_time_wasted = 'Total: ' + total_time_wasted +
+                        ' hours wasted'
+                }
+                else
+                {
+                    total_time_wasted = Math.round(total_time_wasted);
+                    if (total_time_wasted <= 1)
+                    {
+                        total_time_wasted = '1 minute wasted';
+                    }
+                    else
+                    {
+                        total_time_wasted = 'Total: ' + total_time_wasted +
+                            ' minutes wasted'
+                    }
+                }
+                $('#history-header').text(total_time_wasted);
             }
         }
     }
