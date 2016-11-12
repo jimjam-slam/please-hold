@@ -47,8 +47,8 @@ var ph = (function()
             // start with the first question
             ph.answers = {};
             ph.answers.log = [{ qid: "phq-who"}];
-            console.log('Creating new answer object');
-            console.log(JSON.stringify(ph.answers));
+            // console.log('Creating new answer object');
+            // console.log(JSON.stringify(ph.answers));
         }
         else
         {
@@ -58,7 +58,7 @@ var ph = (function()
         }
 
         // get the quiz data
-        console.log('Looking for quiz data.');
+        // console.log('Looking for quiz data.');
         $.getJSON("{{ '/assets/quiz-pleasehold.json' | prepend: site.baseurl }}")
             .done(function(data)
             {
@@ -116,7 +116,8 @@ var ph = (function()
        answer html and associated onClick events  */
     pub.create_question = function(qid)
     {
-        console.log('Creating question: ' + qid);
+        // console.log('Creating question: ' + qid);
+        $('#ph-loading').css('display', 'none');
 
         // question text
         $('#ph-quiz').append(
@@ -161,7 +162,7 @@ var ph = (function()
                             '\t<span class="fa fa-2x ' + value.a_icon + '"></span>\n' +
                             '\t<p>' + value.a_text + '</p>\n' +
                             '</div>';
-                        console.log('Answer ' + value.a_id);
+                        // console.log('Answer ' + value.a_id);
                         break;
                     case 'numpick':
                         num_box =
@@ -491,6 +492,6 @@ $(document).ready(function()
     {
         $('#ph-loading').text('Error: ' + err.message);
         $('#ph-loading').css('display', 'block');
-        console.log(err);
+        console.error(err);
     }
 });
