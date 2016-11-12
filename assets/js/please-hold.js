@@ -18,12 +18,15 @@ var ph = (function()
         // storage size checks first up
         if (JSON.stringify(localStorage).length > 2300000)
         {
-            $('#ph-storage-full').css('display', 'block');
-            throw 'localStorage is full!';
+            $('#ph-storage-full').fadeToggle('fast', function()
+            {
+                throw 'localStorage is full!';
+            });
+            
         }
         else if (JSON.stringify(localStorage).length > 2000000)
         {
-            $('#ph-storage-warning').css('display', 'block');    
+            $('#ph-storage-warning').fadeToggle('fast');    
         }
         
         // TODO - check for< delete existing page content (for restart)
@@ -31,14 +34,19 @@ var ph = (function()
         if (typeof(Storage) === 'undefined')
         {
             // uh oh! nothing happening here
-            throw 'Your browser doesn\x27t support local storage. That\x27s gonna be a problem.';
+            $('#ph-storage-nostorage').fadeToggle('fast', function()
+            {
+                throw 'Your browser doesn\x27t support local storage. ' + 
+                    'That\x27s gonna be a problem.';
+            });
         }
         
         // get first question id (qid)
         if (localStorage.answers === undefined )
         {
             // start with the first question
-            ph.answers = [{ qid: "phq-who"}];
+            ph.answers = {};
+            ph.answers.log = [{ qid: "phq-who"}];
             console.log('Creating new answer object');
             console.log(JSON.stringify(ph.answers));
         }
@@ -47,8 +55,6 @@ var ph = (function()
             // start with current question
             // (last q in array; has qid but not aid)
             ph.answers = JSON.parse(localStorage.answers);
-            console.log('Reading existing answers');
-            console.log(JSON.stringify(ph.answers));
         }
 
         // get the quiz data
@@ -76,8 +82,11 @@ var ph = (function()
 
                 // newest version exists, carry on
                 ph.qdat = data;
-                $('#ph-loading').css('display', 'none');
-                ph.create_question(ph.answers[ph.answers.length - 1].qid);
+                ph.create_question(ph.answers.log[ph.answers.log.length - 1].qid);
+                
+                // populate history block as well
+                ph.render_history();
+
             })
             .fail(function() {
 
@@ -92,8 +101,14 @@ var ph = (function()
                     // local version exists, carry on
                     ph.qdat = JSON.parse(localStorage.qdat)
                 }
-                // TODO - delete #ph-loading 
-                ph.create_question(ph.answers[ph.answers.length - 1].qid);
+                // hide the quiz for a tic...
+                $('#ph-quiz').fadeToggle('fast', function()
+                {
+                    // to refresh the questions and (re)populate history
+                    ph.create_question(
+                        ph.answers.log[ph.answers.log.length - 1].qid);
+                    ph.render_history();
+                }); 
             });
     };
 
@@ -115,10 +130,11 @@ var ph = (function()
             // create a textbox with the hint, and create a post button
             text_block =
                 '<textarea name="phq-wrapup-text" id="phq-wrapup-text" ' +
-                'cols="40" rows="5"></textarea>';
+                'cols="40" rows="5" placeholder="' +
+                ph.qdat.questions[qid].q_hint + '"></textarea>';
             post_btn =
-                '<div class="btn-' + ph.qdat.questions[qid].btn_colour + '" ' +
-                    'id="phq-wrapup-post">\n' +
+                '<a href="#" class="btn-' + ph.qdat.questions[qid].btn_colour +
+                    '" id="phq-wrapup-post">\n' +
                 '\t<span class="fa ' + ph.qdat.questions[qid].btn_icon +
                      '"></span>\n' +
                 '\t<p>Done</p>\n' +
@@ -134,65 +150,71 @@ var ph = (function()
             // otherwise, for each answer...
             $.each(ph.qdat.questions[qid].answers, function(index, value)
             {
-                // build the html
+                // build the html depending on answer type
                 switch(value.a_type)
                 {
                     case 'button':
                     case 'justnowbtn':
                         ans_block =
-                            '<div class="btn-' + value.a_colour +
+                            '<a href="#" class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
                             '\t<span class="fa fa-2x ' + value.a_icon + '"></span>\n' +
                             '\t<p>' + value.a_text + '</p>\n' +
                             '</div>';
-                        
-                        // add to the div and attach click events
-                        // (qid, value)
-                        
                         console.log('Answer ' + value.a_id);
                         break;
                     case 'numpick':
                         num_box =
-                            '<input type="number" name="ans_numpick" id="ans_numpick" min="1" max="1440">\n';
+                            '\t<input type="number" name="ans_numpick" ' +
+                            'id="ans_numpick" min="1" max="1440" value="5">\n';
                         ans_block = 
-                            '<div class="btn-' + value.a_colour +
+                            '<a href="#" class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
-                            '\t<span class="fa ' + value.a_icon + '"></span>\n' +
+                            num_box +
                             '\t<p>' + value.a_text + '</p>\n' +
                             '</div>';
-                            $('#ph-quiz').append(num_box);
+                            // $('#ph-quiz').append(num_box);
                         break;
                     case 'dtpick':
-                        // create a date/time picker and a button
-                        // TODO - more input checking on the date/time!
-                        def_dt = new Date($.now());
-                        // def_dt_string =
-                        //     def_dt.getFullYear + '-' +
-                        //     (def_dt.getMonth + 1) + '-' +
-                        //     def_dt.getDate + 'T' +
-                        //     def_dt.getHours + ':' +
-                            
                         dt_box =
-                            '<input type="datetime-local" name="ans_dtpick" id="ans_dtpick" min="2000-01-01" value="' +
-                            moment().local().format().substring(0, 16) + '">';
+                            '\t<input type="datetime-local" name="ans_dtpick" id="ans_dtpick" min="2000-01-01" value="' +
+                            moment().local().format('YYYY-MM-DTHH:mm') + '">';
                         ans_block = 
-                            '<div class="btn-' + value.a_colour +
+                            '<a href="#" class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
-                            '\t<span class="fa ' + value.a_icon +
-                                '"></span>\n' +
+                            dt_box +
                             '\t<p>' + value.a_text + '</p>\n' +
                             '</div>';
-                        $('#ph-quiz').append(dt_box);
                         break;
                     default:
                         throw 'Button type unspecified for ' + value.a_id;
                 }
+                
+                // add the html, attach an click/touch event handler 
                 $('#ph-quiz').append(ans_block);
                 $('#' + value.a_id).on('click touch',
                     { qid: qid, answer: value },
                     ph.on_answer_click);
+                
+                // stop child event handlers from num/dt pickers propogating
+                switch(value.a_type)
+                {
+                    case 'numpick':
+                        $('#ans_numpick').on('click touch', function(event)
+                        {
+                            event.stopPropagation();
+                        });
+                        break;
+                    case 'dtpick':
+                        $('#ans_dtpick').on('click touch', function(event)
+                        {
+                            event.stopPropagation()
+                        });
+                }
             });
         }
+        // make it visible again!
+        $('#ph-quiz').fadeToggle('fast');
     }
 
     /* on_answer_click:
@@ -201,68 +223,216 @@ var ph = (function()
         - register callback for the animation end for the switchover */
     pub.on_answer_click = function(event)
     {
+        // disable default a tag event handling
+        event.preventDefault();
+
         // record answer—this depends on the answer type!
-        // event.data.answer
+        ans_time = '';
         switch(event.data.answer.a_type)
         {
             case 'button':
-                ph.answers[ph.answers.length - 1].ans = event.data.answer.a_id;
+                ph.answers.log[ph.answers.log.length - 1].ans = event.data.answer.a_id;
                 break;
             case 'justnowbtn':
-                ph.answers[ph.answers.length - 1].ans = $.now();
+                ans_time = $.now();
+                // ph.answers[ph.answers.length - 1].ans = $.now();
                 break;
             case 'numpick':
-                ph.answers[ph.answers.length - 1].ans =
-                    $.now() - (1000 * 60 * $('#ans_numpick').val());
+                ans_time = $.now() - (1000 * 60 * $('#ans_numpick').val());
+
                 break;
             case 'dtpick':
-                ph.answers[ph.answers.length - 1].ans =
-                    new Date($('#ans_dtpick').val().replace('T', ' '))
-                    .getTime();
+                ans_time = new Date($('#ans_dtpick').val().replace('T', ' '))
+                    .getTime();;
+        }
+        if (event.data.answer.a_type !== 'button')
+        {
+            // add time to the list
+            ph.answers.log[ph.answers.log.length - 1].ans = ans_time;
+            if (ph.answers['times'] === undefined)
+            {
+                ph.answers.times = [];
+            }
+            ph.answers.times.push(ans_time);
         }
         
         // record answer, sync w/ localStorage
-        ph.answers.push({ qid: event.data.answer.goto_qid });
+        ph.answers.log.push({ qid: event.data.answer.goto_qid });
         localStorage.answers = JSON.stringify(ph.answers);
 
-        // wipe last question
-        $('#ph-quiz').empty();
-
-        // load the next one
-        ph.create_question(event.data.answer.goto_qid);
+        // hide, wipe last question and load next one
+        $('#ph-quiz').fadeToggle('fast', function()
+        {
+            $('#ph-quiz').empty();
+            ph.create_question(event.data.answer.goto_qid);
+        });
     }
 
-    /* finish_quiz: record the last answer, add these answers to the ans_history
+    /* render_history: read through report_history and create html elements
+       for each element in the array */
+    pub.render_history = function()
+    {
+        // hide the block for a tic
+        $('#ph-history').css('display', 'none');
+        if (localStorage.report_history !== undefined)
+        {
+            // history available, check length
+            ph.report_history = JSON.parse(localStorage.report_history);
+            if (ph.report_history.length !== 0)
+            {
+                // empty out old rendered history
+                $('#ph-history').empty();
+
+                // okay, real history items! render 'em
+                $('#ph-history').css('display', 'block');
+                $('#ph-history').append(
+                    '<h2 id="history-header">Past interactions</h2>');
+                $.each(ph.report_history, function(index, value)
+                {
+                    // determine fa icon based on action
+                    icon = '';
+                    switch (value.what)
+                    {
+                        case 'Called':
+                            icon = 'fa-phone';
+                            break;
+                        case 'Visited':
+                            icon = 'fa-building';
+                            break;
+                        case 'Did paperwork for':
+                            icon = 'fa-paper-plane';
+                            break;
+                        case 'Did something for':
+                            icon = 'thumb-tack';
+                            break;
+                        default:
+                            icon = 'fa-thumb-tack';
+                    }
+                    tw = value.time_wasted;
+                    if (tw > 59)
+                    {
+                        tw = Math.round((tw / 60) * 100) / 100;
+                        tw = tw + ' hours wasted'
+                    }
+                    else
+                    {
+                        tw = Math.round(tw);
+                        if (tw <= 1)
+                        {
+                            tw = '1 minute wasted';
+                        }
+                        else
+                        {
+                            tw = tw + ' minutes wasted'
+                        }
+                    }
+                    
+                    next_ans =
+                        '<div class="ph-history-ans">\n' +
+                            '\t<h3 class="ans-header">\n' +
+                                '\t\t<span class="fa fa-lg ' + icon +
+                                    '"></span>\n' +
+                                '\t\t' + value.what + ' ' + value.who + '\n' +
+                            '\t</h3>\n' +
+                            '\t<p><em>' + tw + ' ' +
+                                moment(value.when).fromNow() + '</em></p>\n' +
+                            '\t<p class="report-notes">' + value.notes +
+                                '</p>\n'
+                        '</div>'
+
+                    // write it
+                    $('#ph-history').append(next_ans);
+                });
+            }
+        }
+    }
+
+    /* finish_quiz: record the last answer, add these answers to the report_history
        stack, and set the quiz back up */
     pub.finish_quiz = function(event)
     {
-        console.log(ph.htmlEncode($('#phq-wrapup-text').val()));
-        debugger;
         // record notes as answer
-        ph.answers[ph.answers.length - 1].ans =
+        ph.answers.log[ph.answers.log.length - 1].ans =
             ph.htmlEncode($('#phq-wrapup-text').val());
+
+        // calc time wasted in mins and start time
+        ph.answers.times = ph.answers.times.sort();
+        ph.answers.report = {};
+        ph.answers.report.time_wasted =
+            (ph.answers.times[ph.answers.times.length - 1] -
+            ph.answers.times[0]) / 60000;
+        ph.answers.report.when = ph.answers.times[0];
+        
+        // who and what - need to cycle through answer log for these!
+        $.each(ph.answers.log, function(index, value)
+        {
+            if (value.qid === 'phq-who')
+            {
+                ph.answers.report.who = value.ans;
+            }
+            else if (value.qid === 'phq-mode')
+            {
+                ph.answers.report.what = value.ans;
+            }
+        });
+
+        // format who and what
+        switch (ph.answers.report.who)
+        {
+            case 'pha-who-centrelink':
+                ph.answers.report.who = 'Centrelink';
+                break;
+            case 'pha-who-jobprovider':
+                ph.answers.report.who = 'Job Services Provider';
+                break;
+            case 'pha-who-other':
+                ph.answers.report.who = 'someone else';
+                break;
+            default:
+                ph.answers.report.who = 'someone else';
+        }
+        switch (ph.answers.report.what)
+        {
+            case 'pha-mode-call':
+                ph.answers.report.what = 'Called';
+                break;
+            case 'pha-mode-visit':
+                ph.answers.report.what = 'Visited';
+                break;
+            case 'pha-mode-paperwork':
+                ph.answers.report.what = 'Did paperwork for';
+                break;
+            case 'pha-mode-other':
+                ph.answers.report.what = 'Did something for';
+                break;
+            default:
+                ph.answers.report.what = 'Unknown action for';
+        }
+        ph.answers.report.notes = ph.htmlDecode(
+            ph.answers.log[ph.answers.log.length - 1].ans);
         
         // sync w/ localStorage
-        if (localStorage.ans_history === undefined)
+        if (localStorage.report_history === undefined)
         {
-            ph.ans_history = [];
+            ph.report_history = [];
         }
         else
         {
-            ph.ans_history = JSON.parse(localStorage.ans_history);
+            ph.report_history = JSON.parse(localStorage.report_history);
         }
-        ph.ans_history.push(ph.answers);
-        localStorage.ans_history = JSON.stringify(ph.ans_history);
+        ph.report_history.push(ph.answers.report);
+        localStorage.report_history = JSON.stringify(ph.report_history);
         
-        // delete answers now they're in ans_history
+        // delete answers now they're in report_history
         localStorage.removeItem('answers');
         ph.answers = undefined;
 
-        // TODO - update the ans_history section?
-
         // remove last question and reset
-        $('#ph-quiz').empty();
-        ph.start_quiz();
+        $('#ph-quiz').fadeToggle('fast', function()
+        {
+            $('#ph-quiz').empty();
+            ph.start_quiz();
+        });
     }
 
     /* htmlEncode and htmlDecode: for sanitising user notes

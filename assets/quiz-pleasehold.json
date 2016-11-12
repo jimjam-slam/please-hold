@@ -25,7 +25,7 @@
                     "goto_qid":"phq-mode"
                 },
                 {
-                    "a_id":"pha-type-other",
+                    "a_id":"pha-who-other",
                     "a_text":"Someone else",
                     "a_type":"button",
                     "a_colour":"green",
@@ -54,15 +54,23 @@
                     "a_type":"button",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
-                    "goto_qid":""
+                    "goto_qid":"phq-visit-leavedt"
+                },
+                {
+                    "a_id":"pha-mode-paperwork",
+                    "a_text":"Did paperwork",
+                    "a_type":"button",
+                    "a_colour":"blue",
+                    "a_icon":"fa-paper-plane",
+                    "goto_qid":"phq-paperwork-startdt"
                 },
                 {
                     "a_id":"pha-mode-other",
-                    "a_text":"St helse",
+                    "a_text":"Something else",
                     "a_type":"button",
                     "a_colour":"green",
-                    "a_icon":"fa-paper-plane",
-                    "goto_qid":""
+                    "a_icon":"fa-thumb-tack",
+                    "goto_qid":"phq-other-startdt"
                 }
             ]
         },
@@ -82,7 +90,7 @@
                 },
                 {
                     "a_id":"pha-call-dialdt-minsago",
-                    "a_text":"mins ago",
+                    "a_text":"minutes ago",
                     "a_type":"numpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
@@ -90,7 +98,7 @@
                 },
                 {
                     "a_id":"pha-call-dialdt-earlier",
-                    "a_text":"Earlier today",
+                    "a_text":"Earlier",
                     "a_type":"dtpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
@@ -146,7 +154,7 @@
                 },
                 {
                     "a_id":"pha-call-answerdt-minsago",
-                    "a_text":"mins ago",
+                    "a_text":"minutes ago",
                     "a_type":"numpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
@@ -174,7 +182,7 @@
                     "a_type":"button",
                     "a_colour":"green",
                     "a_icon":"fa-clock-o",
-                    "goto_qid":"phq-wrapup"
+                    "goto_qid":"phq-call-enddt"
                 },
                 {
                     "a_id":"pha-call-result-meh",
@@ -182,7 +190,7 @@
                     "a_type":"button",
                     "a_colour":"yellow",
                     "a_icon":"fa-clock-o",
-                    "goto_qid":"phq-wrapup"
+                    "goto_qid":"phq-call-enddt"
                 },
                 {
                     "a_id":"pha-call-result-bad",
@@ -190,14 +198,14 @@
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-clock-o",
-                    "goto_qid":"phq-wrapup"
+                    "goto_qid":"phq-call-enddt"
                 }
             ]
         },
 
         "phq-call-enddt":
         {
-            "q_text":"When did that happen?",
+            "q_text":"So when we you all done?",
             "answers":
             [
                 {
@@ -210,7 +218,7 @@
                 },
                 {
                     "a_id":"pha-call-enddt-minsago",
-                    "a_text":"mins ago",
+                    "a_text":"minutes ago",
                     "a_type":"numpick",
                     "a_colour":"blue",
                     "a_icon":"fa-building",
@@ -227,10 +235,362 @@
             ]
         },
 
+        "phq-visit-leavedt":
+        {
+            "q_text":"When did you leave?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-visit-leavedt-now",
+                    "a_text":"Just now",
+                    "a_type":"justnowbtn",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-visit-arrival"
+                },
+                {
+                    "a_id":"pha-visit-leavedt-minsago",
+                    "a_text":"minutes ago",
+                    "a_type":"numpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-visit-arrival"
+                },
+                {
+                    "a_id":"pha-visit-leavedt-earlier",
+                    "a_text":"Earlier",
+                    "a_type":"dtpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-visit-arrival"
+                }
+            ]
+        },
+
+        "phq-visit-arrival":
+        {
+            "q_text":"Did you make it there?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-visit-madeit",
+                    "a_text":"Yep, made it!",
+                    "a_type":"button",
+                    "a_colour":"green",
+                    "a_icon":"fa-comments",
+                    "goto_qid":"phq-visit-arrivedt"
+                },
+                {
+                    "a_id":"pha-visit-aborted",
+                    "a_text":"Nope, changed my mind",
+                    "a_type":"button",
+                    "a_colour":"yellow",
+                    "a_icon":"fa-ban",
+                    "goto_qid":"phq-visit-enddt"
+                },
+                {
+                    "a_id":"pha-visit-closed",
+                    "a_text":"Yeah, but they were closed!",
+                    "a_type":"button",
+                    "a_colour":"red",
+                    "a_icon":"fa-unlink",
+                    "goto_qid":"phq-visit-enddt"
+                }
+            ]
+        },
+
+        "phq-visit-arrivedt":
+        {
+            "q_text":"When did you arrive?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-visit-arrivedt-now",
+                    "a_text":"Just now",
+                    "a_type":"justnowbtn",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-visit-result"
+                },
+                {
+                    "a_id":"pha-visit-arrivedt-minsago",
+                    "a_text":"minutes ago",
+                    "a_type":"numpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-visit-result"
+                },
+                {
+                    "a_id":"pha-visit-arrivedt-earlier",
+                    "a_text":"Earlier",
+                    "a_type":"dtpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-visit-result"
+                }
+            ]
+        },
+
+        "phq-visit-result":
+        {
+            "q_text":"How'd things go?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-visit-result-good",
+                    "a_text":"Great! All sorted",
+                    "a_type":"button",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-visit-enddt"
+                },
+                {
+                    "a_id":"pha-visit-result-meh",
+                    "a_text":"Good, buuuut...",
+                    "a_type":"button",
+                    "a_colour":"yellow",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-visit-enddt"
+                },
+                {
+                    "a_id":"pha-visit-result-bad",
+                    "a_text":"Terrible! No help at all",
+                    "a_type":"button",
+                    "a_colour":"red",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-visit-enddt"
+                }
+            ]
+        },
+
+        "phq-visit-enddt":
+        {
+            "q_text":"So when were you all done?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-visit-enddt-now",
+                    "a_text":"Just now",
+                    "a_type":"justnowbtn",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-wrapup"
+                },
+                {
+                    "a_id":"pha-visit-enddt-minsago",
+                    "a_text":"minutes ago",
+                    "a_type":"numpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-wrapup"
+                },
+                {
+                    "a_id":"pha-visit-enddt-earlier",
+                    "a_text":"Earlier",
+                    "a_type":"dtpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-wrapup"
+                }
+            ]
+        },
+
+        "phq-paperwork-startdt":
+        {
+            "q_text":"When did you start this paperwork?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-paperwork-startdt-now",
+                    "a_text":"Just now",
+                    "a_type":"justnowbtn",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-paperwork-result"
+                },
+                {
+                    "a_id":"pha-paperwork-startdt-minsago",
+                    "a_text":"minutes ago",
+                    "a_type":"numpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-paperwork-result"
+                },
+                {
+                    "a_id":"pha-paperwork-startdt-earlier",
+                    "a_text":"Earlier",
+                    "a_type":"dtpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-paperwork-result"
+                }
+            ]
+        },
+
+        "phq-paperwork-result":
+        {
+            "q_text":"How'd things go?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-paperwork-result-good",
+                    "a_text":"Great! All done",
+                    "a_type":"button",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-paperwork-enddt"
+                },
+                {
+                    "a_id":"pha-paperwork-result-meh",
+                    "a_text":"Done, buuuut...",
+                    "a_type":"button",
+                    "a_colour":"yellow",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-paperwork-enddt"
+                },
+                {
+                    "a_id":"pha-paperwork-result-bad",
+                    "a_text":"Couldn't finish it!",
+                    "a_type":"button",
+                    "a_colour":"red",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-paperwork-enddt"
+                }
+            ]
+        },
+
+        "phq-paperwork-enddt":
+        {
+            "q_text":"So when were you all done?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-paperwork-enddt-now",
+                    "a_text":"Just now",
+                    "a_type":"justnowbtn",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-wrapup"
+                },
+                {
+                    "a_id":"pha-paperwork-enddt-minsago",
+                    "a_text":"minutes ago",
+                    "a_type":"numpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-wrapup"
+                },
+                {
+                    "a_id":"pha-paperwork-enddt-earlier",
+                    "a_text":"Earlier",
+                    "a_type":"dtpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-wrapup"
+                }
+            ]
+        },
+
+        "phq-other-startdt":
+        {
+            "q_text":"When did you start this task?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-other-startdt-now",
+                    "a_text":"Just now",
+                    "a_type":"justnowbtn",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-other-result"
+                },
+                {
+                    "a_id":"pha-other-startdt-minsago",
+                    "a_text":"minutes ago",
+                    "a_type":"numpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-other-result"
+                },
+                {
+                    "a_id":"pha-other-startdt-earlier",
+                    "a_text":"Earlier",
+                    "a_type":"dtpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-other-result"
+                }
+            ]
+        },
+
+        "phq-other-result":
+        {
+            "q_text":"How'd things go?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-other-result-good",
+                    "a_text":"Great! All sorted",
+                    "a_type":"button",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-other-enddt"
+                },
+                {
+                    "a_id":"pha-other-result-meh",
+                    "a_text":"Good, buuuut...",
+                    "a_type":"button",
+                    "a_colour":"yellow",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-other-enddt"
+                },
+                {
+                    "a_id":"pha-other-result-bad",
+                    "a_text":"Terrible! No help at all",
+                    "a_type":"button",
+                    "a_colour":"red",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-other-enddt"
+                }
+            ]
+        },
+
+        "phq-other-enddt":
+        {
+            "q_text":"So when were you all done?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-other-enddt-now",
+                    "a_text":"Just now",
+                    "a_type":"justnowbtn",
+                    "a_colour":"green",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-wrapup"
+                },
+                {
+                    "a_id":"pha-other-enddt-minsago",
+                    "a_text":"minutes ago",
+                    "a_type":"numpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-wrapup"
+                },
+                {
+                    "a_id":"pha-other-enddt-earlier",
+                    "a_text":"Earlier",
+                    "a_type":"dtpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-wrapup"
+                }
+            ]
+        },
+
         "phq-wrapup":
         {
             "q_text":"Anything else you want to remember?",
-            "q_hint":"Something they said? Something you were asked to do?",
+            "q_hint":"Something you were told or need to do next?",
             "btn_colour":"green",
             "btn_icon":"fa-check"
         }
