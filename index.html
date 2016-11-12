@@ -3,7 +3,7 @@ layout: default
 title: Please Hold
 date: 2016-11-05
 category: projects
-image: mast.jpg
+image: mast.jpeg
 description: Track the time you waste with Centrelink. Everything stays on your device.
 
 my_css: please-hold.css
@@ -16,7 +16,7 @@ my_js: please-hold.js
     <a class="nav nav--white" href="http://rensa.co/projects">
       <h2>rensa.co | Projects</h2>
     </a>
-    <figure class="absolute-bg mast__img" style="background-image: url({{ '/assets/' | append: page.image | prepend: site.baseurl }}');"></figure>
+    <figure class="absolute-bg mast__img" style="background-image: url('{{ '/assets/' | append: page.image | prepend: site.baseurl }}');"></figure>
     <div class="mast__container projects">
       <!--<span><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time></span>-->
       <h1 itemprop="name headline">{{ page.title }}</h1>

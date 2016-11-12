@@ -408,8 +408,8 @@ var ph = (function()
             default:
                 ph.answers.report.what = 'Unknown action for';
         }
-        ph.answers.report.notes = ph.htmlDecode(
-            ph.answers.log[ph.answers.log.length - 1].ans);
+        ph.answers.report.notes =
+            ph.answers.log[ph.answers.log.length - 1].ans;
         
         // sync w/ localStorage
         if (localStorage.report_history === undefined)
