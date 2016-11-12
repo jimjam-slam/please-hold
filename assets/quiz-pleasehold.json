@@ -177,7 +177,7 @@
                     "goto_qid":"phq-wrapup"
                 },
                 {
-                    "a_id":"pha-call-rsult-meh",
+                    "a_id":"pha-call-result-meh",
                     "a_text":"Good, buuuut...",
                     "a_type":"button",
                     "a_colour":"yellow",
@@ -185,7 +185,7 @@
                     "goto_qid":"phq-wrapup"
                 },
                 {
-                    "a_id":"pha-call-rsult-bad",
+                    "a_id":"pha-call-result-bad",
                     "a_text":"Terrible! No help at all",
                     "a_type":"button",
                     "a_colour":"red",
@@ -231,8 +231,8 @@
         {
             "q_text":"Anything else you want to remember?",
             "q_hint":"Something they said? Something you were asked to do?",
-            "btn-colour":"red",
-            "btn-icon":"fa-check"
+            "btn_colour":"green",
+            "btn_icon":"fa-check"
         }
     }
 }

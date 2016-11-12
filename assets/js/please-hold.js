@@ -15,6 +15,17 @@ var ph = (function()
     /* start_quiz: initialise data sets and find where we're up to */
     pub.start_quiz = function()
     {
+        // storage size checks first up
+        if (JSON.stringify(localStorage).length > 2300000)
+        {
+            $('#ph-storage-full').css('display', 'block');
+            throw 'localStorage is full!';
+        }
+        else if (JSON.stringify(localStorage).length > 2000000)
+        {
+            $('#ph-storage-warning').css('display', 'block');    
+        }
+        
         // TODO - check for< delete existing page content (for restart)
         
         if (typeof(Storage) === 'undefined')
@@ -65,7 +76,7 @@ var ph = (function()
 
                 // newest version exists, carry on
                 ph.qdat = data;
-                // TODO - delete #ph-loading
+                $('#ph-loading').css('display', 'none');
                 ph.create_question(ph.answers[ph.answers.length - 1].qid);
             })
             .fail(function() {
@@ -106,9 +117,9 @@ var ph = (function()
                 '<textarea name="phq-wrapup-text" id="phq-wrapup-text" ' +
                 'cols="40" rows="5"></textarea>';
             post_btn =
-                '<div class="btn-' + ph.qdat.questions[qid].btn-colour + '" ' +
+                '<div class="btn-' + ph.qdat.questions[qid].btn_colour + '" ' +
                     'id="phq-wrapup-post">\n' +
-                '\t<span class="fa ' + ph.qdat.questions[qid].btn-icon +
+                '\t<span class="fa ' + ph.qdat.questions[qid].btn_icon +
                      '"></span>\n' +
                 '\t<p>Done</p>\n' +
                 '</div>'
@@ -116,9 +127,7 @@ var ph = (function()
             $('#ph-quiz').append(post_btn);
 
             // attach post_btn click event
-            $('#phq-wrapup-post').on('click touch',
-                { notes: ph.htmlEncode($(phq-wrapup-text).val()) },
-                ph.finish_quiz);
+            $('#phq-wrapup-post').on('click touch', ph.finish_quiz);
         }
         else
         {
@@ -156,8 +165,16 @@ var ph = (function()
                     case 'dtpick':
                         // create a date/time picker and a button
                         // TODO - more input checking on the date/time!
+                        def_dt = new Date($.now());
+                        // def_dt_string =
+                        //     def_dt.getFullYear + '-' +
+                        //     (def_dt.getMonth + 1) + '-' +
+                        //     def_dt.getDate + 'T' +
+                        //     def_dt.getHours + ':' +
+                            
                         dt_box =
-                            '<input type="datetime-local" name="ans_dtpick" id="ans_numpick" min="2016-01-01">';
+                            '<input type="datetime-local" name="ans_dtpick" id="ans_dtpick" min="2000-01-01" value="' +
+                            moment().local().format().substring(0, 16) + '">';
                         ans_block = 
                             '<div class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
@@ -165,7 +182,8 @@ var ph = (function()
                                 '"></span>\n' +
                             '\t<p>' + value.a_text + '</p>\n' +
                             '</div>';
-                            $('#ph-quiz').append(dt_box);
+                        $('#ph-quiz').append(dt_box);
+                        break;
                     default:
                         throw 'Button type unspecified for ' + value.a_id;
                 }
@@ -195,7 +213,7 @@ var ph = (function()
                 break;
             case 'numpick':
                 ph.answers[ph.answers.length - 1].ans =
-                    $now() - (1000 * 60 * $('#ans_numpick').val());
+                    $.now() - (1000 * 60 * $('#ans_numpick').val());
                 break;
             case 'dtpick':
                 ph.answers[ph.answers.length - 1].ans =
@@ -214,30 +232,33 @@ var ph = (function()
         ph.create_question(event.data.answer.goto_qid);
     }
 
-    /* finish_quiz: record the last answer, add these answers to the history
+    /* finish_quiz: record the last answer, add these answers to the ans_history
        stack, and set the quiz back up */
     pub.finish_quiz = function(event)
     {
-        // record notes as Answer
-        ph.answers[ph.answers.length - 1].ans = event.data.notes;
+        console.log(ph.htmlEncode($('#phq-wrapup-text').val()));
+        debugger;
+        // record notes as answer
+        ph.answers[ph.answers.length - 1].ans =
+            ph.htmlEncode($('#phq-wrapup-text').val());
         
         // sync w/ localStorage
-        if (localStorage.history === undefined)
+        if (localStorage.ans_history === undefined)
         {
-            history = [];
+            ph.ans_history = [];
         }
         else
         {
-            history = JSON.parse(localStorage.history);
+            ph.ans_history = JSON.parse(localStorage.ans_history);
         }
-        history.push(ph.answers);
-        localStorage.history = JSON.stringify(history);
+        ph.ans_history.push(ph.answers);
+        localStorage.ans_history = JSON.stringify(ph.ans_history);
         
-        // delete answers now they're in history
+        // delete answers now they're in ans_history
         localStorage.removeItem('answers');
         ph.answers = undefined;
 
-        // TODO - update the history section?
+        // TODO - update the ans_history section?
 
         // remove last question and reset
         $('#ph-quiz').empty();
@@ -269,11 +290,12 @@ $(document).ready(function()
 {    
     try
     {
-        ph.start_quiz();    
+        ph.start_quiz();       
     }
     catch(err)
     {
-        $('#ph-loading').text(err.message);
+        $('#ph-loading').text('Error: ' + err.message);
+        $('#ph-loading').css('display', 'block');
         console.log(err);
     }
 });

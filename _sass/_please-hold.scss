@@ -2,11 +2,7 @@
    james goldie, 2016
 */
 
-#ph-loading
-{
-    color: red;
-    text-align: center;
-}
+/* quiz questions! */
 
 #ph-quiz
 {
@@ -41,6 +37,22 @@
             display: inline;
         }
     }
+
+    textarea
+    {
+        font-family: $font-body;
+        font-size: 0.75em;
+        width: 100%;
+        max-width: 480px;
+    }
+
+    #phq-wrapup-post
+    {
+        display: block;
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* button styles */
@@ -66,4 +78,28 @@
         border: 2px #090;
         background: #0c0;
     }
+}
+
+/* alerts and other miscellania */
+
+#ph-loading
+{
+    color: red;
+    text-align: center;
+}
+
+#ph-space-warning
+{
+    display: none;
+    background-color: yellow;
+    color: black;
+    text-align: center;
+}
+
+#ph-space-full
+{
+    display: none;
+    background-color: red;
+    color: white;
+    text-align: center;
 }
