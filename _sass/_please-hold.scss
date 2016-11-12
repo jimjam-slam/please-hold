@@ -36,7 +36,7 @@ $color-ph-b: #ff821b;
     }
     
     // all quiz buttons 
-    a
+    button
     {
         border-radius: 4px;
         display: inline-block;
@@ -48,6 +48,7 @@ $color-ph-b: #ff821b;
         p
         {
             margin: 15px 0 0 0;
+            text-transform: uppercase;
         }
 
         span
@@ -84,6 +85,11 @@ $color-ph-b: #ff821b;
     {
         font-size: 2.25em;
         text-transform: uppercase;
+    }
+
+    ul li
+    {
+        list-style: none; 
     }
 
     span

@@ -134,12 +134,12 @@ var ph = (function()
                 'cols="40" rows="5" placeholder="' +
                 ph.qdat.questions[qid].q_hint + '"></textarea>';
             post_btn =
-                '<a href="#" class="btn-' + ph.qdat.questions[qid].btn_colour +
+                '<button class="btn-' + ph.qdat.questions[qid].btn_colour +
                     '" id="phq-wrapup-post">\n' +
                 '\t<span class="fa ' + ph.qdat.questions[qid].btn_icon +
                      '"></span>\n' +
                 '\t<p>Done</p>\n' +
-                '</div>'
+                '</button>'
             $('#ph-quiz').append(text_block);
             $('#ph-quiz').append(post_btn);
 
@@ -157,11 +157,11 @@ var ph = (function()
                     case 'button':
                     case 'justnowbtn':
                         ans_block =
-                            '<a href="#" class="btn-' + value.a_colour +
+                            '<button class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
                             '\t<span class="fa fa-2x ' + value.a_icon + '"></span>\n' +
                             '\t<p>' + value.a_text + '</p>\n' +
-                            '</div>';
+                            '</button>';
                         // console.log('Answer ' + value.a_id);
                         break;
                     case 'numpick':
@@ -169,11 +169,11 @@ var ph = (function()
                             '\t<input type="number" name="ans_numpick" ' +
                             'id="ans_numpick" min="1" max="1440" value="5">\n';
                         ans_block = 
-                            '<a href="#" class="btn-' + value.a_colour +
+                            '<button class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
                             num_box +
                             '\t<p>' + value.a_text + '</p>\n' +
-                            '</div>';
+                            '</button>';
                             // $('#ph-quiz').append(num_box);
                         break;
                     case 'dtpick':
@@ -181,11 +181,11 @@ var ph = (function()
                             '\t<input type="datetime-local" name="ans_dtpick" id="ans_dtpick" min="2000-01-01" value="' +
                             moment().local().format('YYYY-MM-DTHH:mm') + '">';
                         ans_block = 
-                            '<a href="#" class="btn-' + value.a_colour +
+                            '<button class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
                             dt_box +
                             '\t<p>' + value.a_text + '</p>\n' +
-                            '</div>';
+                            '</button>';
                         break;
                     default:
                         throw 'Button type unspecified for ' + value.a_id;
@@ -288,6 +288,7 @@ var ph = (function()
                 $('#ph-history').css('display', 'block');
                 $('#ph-history').append(
                     '<h2 id="history-header"></h2>');
+                $('#ph-history').append('<ul id="ph-history-list"></ul>');
                 total_time_wasted = 0;
                 $.each(ph.report_history, function(index, value)
                 {
@@ -331,7 +332,7 @@ var ph = (function()
                     }
                     
                     next_ans =
-                        '<div class="ph-history-ans">\n' +
+                        '<li class="ph-history-ans">\n' +
                             '\t<h3 class="ans-header">\n' +
                                 '\t\t<span class="fa fa-lg ' + icon +
                                     '"></span>\n' +
@@ -341,10 +342,10 @@ var ph = (function()
                                 moment(value.when).fromNow() + '</em></p>\n' +
                             '\t<p class="report-notes">' + value.notes +
                                 '</p>\n'
-                        '</div>'
+                        '</li>'
 
                     // write it
-                    $('#ph-history').append(next_ans);
+                    $('#ph-history-list').append(next_ans);
                 });
 
                 // add it up and change the header
