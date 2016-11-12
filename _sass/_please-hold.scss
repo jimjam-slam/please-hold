@@ -2,8 +2,26 @@
    james goldie, 2016
 */
 
-/* quiz questions! */
+/* custom header gradient */
+$color-ph-a: #dd1bff;
+$color-ph-b: #ff821b;
+.mast__container.projects h1
+{
+    background: -webkit-linear-gradient(to top right,
+        $color-ph-a,
+        $color-ph-b);
+    background: -moz-linear-gradient(to top right,
+        $color-ph-a,
+        $color-ph-b);
+    background: linear-gradient(to top right,
+        $color-ph-a,
+        $color-ph-b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: $color-ph-a;
+}
 
+/* quiz questions! */
 #ph-quiz
 {
     display: none;
@@ -25,6 +43,7 @@
         height: 140px;
         padding: 20px;
         margin: 10px;
+        vertical-align: top;
 
         p
         {
@@ -74,22 +93,15 @@
     &-red
     {
         color: #fff;
-        border: 2px #900;
-        background: #c00;
+        border: 2px #b50000;
+        background: #d90000;
     }
 
-    &-blue
+    &-orange
     {
         color: #fff;
-        border: 2px #009;
-        background: #00c;
-    }
-
-    &-green
-    {
-        color: #fff;
-        border: 2px #090;
-        background: #0c0;
+        border: 2px #db6500;
+        background: #fd7400;
     }
 
     &-yellow
@@ -97,6 +109,43 @@
         color: #000;
         border: 2px #da0;
         background: #fc0;
+    }
+
+    &-green
+    {
+        color: #fff;
+        border: 2px #588f27;
+        background: #69ab2f;
+    }
+    
+    &-blue
+    {
+        color: #fff;
+        border: 2px #2185c5;
+        background: #7ecefd;
+    }
+
+    &-darkblue
+    {
+        color: #fff;
+        border: 2px #141952;
+        background: #0d1570;
+    }
+
+    &-purple
+    {
+        color: #fff;
+        border: 2px #36175e;
+        background: #553285;
+    }
+
+    
+
+    &-grey
+    {
+        color: #fff;
+        border: 2px #2b3a42;
+        background: #3f5765;
     }
 }
 
@@ -122,4 +171,21 @@
     background-color: red;
     color: white;
     text-align: center;
+}
+
+section.legal
+{
+    padding: 2em;
+    background-color: #333;
+    
+    p
+    {
+        color: #fff;
+        size: 0.25em;
+
+        a
+        {
+            color: $color-ph-b;
+        }
+    }
 }

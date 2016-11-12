@@ -12,16 +12,16 @@
                     "a_id":"pha-who-centrelink",
                     "a_text":"Centrelink",
                     "a_type":"button",
-                    "a_colour":"red",
-                    "a_icon":"fa-phone",
+                    "a_colour":"purple",
+                    "a_icon":"fa-users",
                     "goto_qid":"phq-mode"
                 },
                 {
                     "a_id":"pha-who-jobprovider",
                     "a_text":"Job Services Provider",
                     "a_type":"button",
-                    "a_colour":"blue",
-                    "a_icon":"fa-building",
+                    "a_colour":"orange",
+                    "a_icon":"fa-wrench",
                     "goto_qid":"phq-mode"
                 },
                 {
@@ -29,7 +29,7 @@
                     "a_text":"Someone else",
                     "a_type":"button",
                     "a_colour":"green",
-                    "a_icon":"fa-paper-plane",
+                    "a_icon":"fa-street-view",
                     "goto_qid":"phq-mode"
                 }
             ]
@@ -58,9 +58,9 @@
                 },
                 {
                     "a_id":"pha-mode-paperwork",
-                    "a_text":"Did paperwork",
+                    "a_text":"Doing paperwork",
                     "a_type":"button",
-                    "a_colour":"blue",
+                    "a_colour":"green",
                     "a_icon":"fa-paper-plane",
                     "goto_qid":"phq-paperwork-startdt"
                 },
@@ -68,7 +68,7 @@
                     "a_id":"pha-mode-other",
                     "a_text":"Something else",
                     "a_type":"button",
-                    "a_colour":"green",
+                    "a_colour":"grey",
                     "a_icon":"fa-thumb-tack",
                     "goto_qid":"phq-other-startdt"
                 }
@@ -84,7 +84,7 @@
                     "a_id":"pha-call-dialdt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"red",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-call-endhold"
                 },
@@ -92,7 +92,7 @@
                     "a_id":"pha-call-dialdt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"orange",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-call-endhold"
                 },
@@ -100,7 +100,7 @@
                     "a_id":"pha-call-dialdt-earlier",
                     "a_text":"Earlier",
                     "a_type":"dtpick",
-                    "a_colour":"blue",
+                    "a_colour":"yellow",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-call-endhold"
                 }
@@ -148,7 +148,7 @@
                     "a_id":"pha-call-answerdt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"purple",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-call-result"
                 },
@@ -156,7 +156,7 @@
                     "a_id":"pha-call-answerdt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"darkblue",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-call-result"
                 },
@@ -181,7 +181,7 @@
                     "a_text":"Great! All sorted",
                     "a_type":"button",
                     "a_colour":"green",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-smile-o",
                     "goto_qid":"phq-call-enddt"
                 },
                 {
@@ -189,7 +189,7 @@
                     "a_text":"Good, buuuut...",
                     "a_type":"button",
                     "a_colour":"yellow",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-meh-o",
                     "goto_qid":"phq-call-enddt"
                 },
                 {
@@ -197,7 +197,7 @@
                     "a_text":"Terrible! No help at all",
                     "a_type":"button",
                     "a_colour":"red",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-frown-o",
                     "goto_qid":"phq-call-enddt"
                 }
             ]
@@ -205,14 +205,14 @@
 
         "phq-call-enddt":
         {
-            "q_text":"So when we you all done?",
+            "q_text":"So when were you all done?",
             "answers":
             [
                 {
                     "a_id":"pha-call-enddt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"red",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-wrapup"
                 },
@@ -220,7 +220,7 @@
                     "a_id":"pha-call-enddt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"orange",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-wrapup"
                 },
@@ -228,7 +228,7 @@
                     "a_id":"pha-call-enddt-earlier",
                     "a_text":"Earlier",
                     "a_type":"dtpick",
-                    "a_colour":"blue",
+                    "a_colour":"yellow",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-wrapup"
                 }
@@ -244,7 +244,7 @@
                     "a_id":"pha-visit-leavedt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"red",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-visit-arrival"
                 },
@@ -252,7 +252,7 @@
                     "a_id":"pha-visit-leavedt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"orange",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-visit-arrival"
                 },
@@ -260,7 +260,7 @@
                     "a_id":"pha-visit-leavedt-earlier",
                     "a_text":"Earlier",
                     "a_type":"dtpick",
-                    "a_colour":"blue",
+                    "a_colour":"yellow",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-visit-arrival"
                 }
@@ -277,7 +277,7 @@
                     "a_text":"Yep, made it!",
                     "a_type":"button",
                     "a_colour":"green",
-                    "a_icon":"fa-comments",
+                    "a_icon":"fa-check",
                     "goto_qid":"phq-visit-arrivedt"
                 },
                 {
@@ -285,7 +285,7 @@
                     "a_text":"Nope, changed my mind",
                     "a_type":"button",
                     "a_colour":"yellow",
-                    "a_icon":"fa-ban",
+                    "a_icon":"fa-arrows",
                     "goto_qid":"phq-visit-enddt"
                 },
                 {
@@ -293,7 +293,7 @@
                     "a_text":"Yeah, but they were closed!",
                     "a_type":"button",
                     "a_colour":"red",
-                    "a_icon":"fa-unlink",
+                    "a_icon":"fa-close",
                     "goto_qid":"phq-visit-enddt"
                 }
             ]
@@ -308,7 +308,7 @@
                     "a_id":"pha-visit-arrivedt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"purple",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-visit-result"
                 },
@@ -316,7 +316,7 @@
                     "a_id":"pha-visit-arrivedt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"darkblue",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-visit-result"
                 },
@@ -341,7 +341,7 @@
                     "a_text":"Great! All sorted",
                     "a_type":"button",
                     "a_colour":"green",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-smile-o",
                     "goto_qid":"phq-visit-enddt"
                 },
                 {
@@ -349,7 +349,7 @@
                     "a_text":"Good, buuuut...",
                     "a_type":"button",
                     "a_colour":"yellow",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-meh-o",
                     "goto_qid":"phq-visit-enddt"
                 },
                 {
@@ -357,7 +357,7 @@
                     "a_text":"Terrible! No help at all",
                     "a_type":"button",
                     "a_colour":"red",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-frown-o",
                     "goto_qid":"phq-visit-enddt"
                 }
             ]
@@ -372,7 +372,7 @@
                     "a_id":"pha-visit-enddt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"red",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-wrapup"
                 },
@@ -380,7 +380,7 @@
                     "a_id":"pha-visit-enddt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"orange",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-wrapup"
                 },
@@ -388,7 +388,7 @@
                     "a_id":"pha-visit-enddt-earlier",
                     "a_text":"Earlier",
                     "a_type":"dtpick",
-                    "a_colour":"blue",
+                    "a_colour":"yellow",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-wrapup"
                 }
@@ -404,7 +404,7 @@
                     "a_id":"pha-paperwork-startdt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"red",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-paperwork-result"
                 },
@@ -412,7 +412,7 @@
                     "a_id":"pha-paperwork-startdt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"orange",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-paperwork-result"
                 },
@@ -420,7 +420,7 @@
                     "a_id":"pha-paperwork-startdt-earlier",
                     "a_text":"Earlier",
                     "a_type":"dtpick",
-                    "a_colour":"blue",
+                    "a_colour":"yellow",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-paperwork-result"
                 }
@@ -437,7 +437,7 @@
                     "a_text":"Great! All done",
                     "a_type":"button",
                     "a_colour":"green",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-smile-o",
                     "goto_qid":"phq-paperwork-enddt"
                 },
                 {
@@ -445,7 +445,7 @@
                     "a_text":"Done, buuuut...",
                     "a_type":"button",
                     "a_colour":"yellow",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-meh-o",
                     "goto_qid":"phq-paperwork-enddt"
                 },
                 {
@@ -453,7 +453,7 @@
                     "a_text":"Couldn't finish it!",
                     "a_type":"button",
                     "a_colour":"red",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-frown-o",
                     "goto_qid":"phq-paperwork-enddt"
                 }
             ]
@@ -468,7 +468,7 @@
                     "a_id":"pha-paperwork-enddt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"purple",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-wrapup"
                 },
@@ -476,7 +476,7 @@
                     "a_id":"pha-paperwork-enddt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"darkblue",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-wrapup"
                 },
@@ -500,7 +500,7 @@
                     "a_id":"pha-other-startdt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"red",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-other-result"
                 },
@@ -508,7 +508,7 @@
                     "a_id":"pha-other-startdt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"orange",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-other-result"
                 },
@@ -516,7 +516,7 @@
                     "a_id":"pha-other-startdt-earlier",
                     "a_text":"Earlier",
                     "a_type":"dtpick",
-                    "a_colour":"blue",
+                    "a_colour":"yellow",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-other-result"
                 }
@@ -533,7 +533,7 @@
                     "a_text":"Great! All sorted",
                     "a_type":"button",
                     "a_colour":"green",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-smile-o",
                     "goto_qid":"phq-other-enddt"
                 },
                 {
@@ -541,7 +541,7 @@
                     "a_text":"Good, buuuut...",
                     "a_type":"button",
                     "a_colour":"yellow",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-meh-o",
                     "goto_qid":"phq-other-enddt"
                 },
                 {
@@ -549,7 +549,7 @@
                     "a_text":"Terrible! No help at all",
                     "a_type":"button",
                     "a_colour":"red",
-                    "a_icon":"fa-clock-o",
+                    "a_icon":"fa-frown-o",
                     "goto_qid":"phq-other-enddt"
                 }
             ]
@@ -564,7 +564,7 @@
                     "a_id":"pha-other-enddt-now",
                     "a_text":"Just now",
                     "a_type":"justnowbtn",
-                    "a_colour":"green",
+                    "a_colour":"purple",
                     "a_icon":"fa-clock-o",
                     "goto_qid":"phq-wrapup"
                 },
@@ -572,7 +572,7 @@
                     "a_id":"pha-other-enddt-minsago",
                     "a_text":"minutes ago",
                     "a_type":"numpick",
-                    "a_colour":"blue",
+                    "a_colour":"darkblue",
                     "a_icon":"fa-building",
                     "goto_qid":"phq-wrapup"
                 },
