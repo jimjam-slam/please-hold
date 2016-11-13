@@ -396,8 +396,30 @@ var ph = (function()
                     'summary=Track the time you waste with Centrelink. ' + 'Everything stays on your device.&' +
                     'source=http://rensa.co/please-hold');
                 
-                // add buttons for deleting (and later exporting) data
+                // add button for deleting data, plus event handlers
                 $('#ph-history').append(
+                    '<button id="history-delete" class="btn-lgrey">\n' +
+                    '\t<span class="fa fa-2x fa-trash"></span>\n' +
+                    '\t<h3>Delete history</h3>\n' +
+                    '\t<h3 id="history-delete-confirm" ' +
+                    'style="display:none;">Really?</h3>\n' +
+                    '</button>');
+                $('#history-delete').on('touch click', function()
+                {
+                    $('#history-delete-confirm').fadeToggle('slow', function()
+                    {                     
+                        // switch event handler to actual deletion 
+                        $('#history-delete').off('touch click');
+                        $('#history-delete').on(
+                            'touch click', function()
+                        {
+                            $('#ph-quiz').empty();
+                            localStorage.clear();
+                            ph.start_quiz();
+                        });
+                    });
+                });
+                // $('#history-delete-confirm').css('display', 'none');
             }
         }
     }
