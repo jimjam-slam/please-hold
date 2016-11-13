@@ -282,11 +282,21 @@ var ph = (function()
                 // empty out old rendered history
                 $('#ph-history').empty();
 
-                // okay, real history items! render 'em
+                // append the header, social sharers and list scaffolding
                 $('#ph-history').css('display', 'block');
                 $('#ph-history').append(
                     '<h2 id="history-header"></h2>');
+                $('#ph-history').append(
+                    '<div id="history-share-btns"></div>');
+                
+                $('#history-share-btns').append(
+                    '<a class="twitter-share-button" ' +
+                    'id="history-share-twitter" data-size="large">Tweet</a>');
+                $('#history-share-btns').append(
+                    '<div class="fb-share-button" data-href="http://rensa.co/please-hold" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Frensa.co%2Fplease-hold&amp;src=sdkpreparse">Share</a></div>');
                 $('#ph-history').append('<ul id="ph-history-list"></ul>');
+                
+                // append the history items in reverse order
                 total_time_wasted = 0;
                 $($("li").get().reverse())
                 $.each(ph.report_history.reverse(), function(index, value)
@@ -314,7 +324,7 @@ var ph = (function()
                     total_time_wasted = total_time_wasted + tw; 
                     if (tw > 59)
                     {
-                        tw = Math.round((tw / 60) * 100) / 100;
+                        tw = Math.round((tw / 60) * 10) / 10;
                         tw = tw + ' hours wasted'
                     }
                     else
@@ -351,8 +361,8 @@ var ph = (function()
                 if (total_time_wasted > 59)
                 {
                     total_time_wasted =
-                        Math.round((total_time_wasted / 60) * 100) / 100;
-                    total_time_wasted = 'Total: ' + total_time_wasted +
+                        Math.round((total_time_wasted / 60) * 10) / 10;
+                    total_time_wasted = total_time_wasted +
                         ' hours wasted'
                 }
                 else
@@ -364,11 +374,16 @@ var ph = (function()
                     }
                     else
                     {
-                        total_time_wasted = 'Total: ' + total_time_wasted +
+                        total_time_wasted = total_time_wasted +
                             ' minutes wasted'
                     }
                 }
                 $('#history-header').text(total_time_wasted);
+                $('#history-share-twitter').attr('href',
+                    'https://twitter.com/intent/tweet?text=' +
+                    total_time_wasted + ' with %40Centrelink:' +
+                    '&via=pleasehold_app' +
+                    '&related=rensa_co');
             }
         }
     }
@@ -470,13 +485,6 @@ var ph = (function()
             return '';
         }
     }
-    pub.htmlDecode = function(value) {
-        if (value) {
-            return $('<div />').html(value).text();
-        } else {
-            return '';
-        }
-    }
 
     return pub;
 })();
@@ -484,6 +492,26 @@ var ph = (function()
 /* ready: do prereq checks and load quiz data */
 $(document).ready(function()
 {    
+    // twitter setup
+    window.twttr = (function(d, s, id)
+    {
+    var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+        t._e.push(f);
+    };
+
+    return t;
+    }(document, "script", "twitter-wjs"));
+
+    // get things started
     try
     {
         ph.start_quiz();       
