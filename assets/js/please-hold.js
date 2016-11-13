@@ -385,7 +385,7 @@ var ph = (function()
                 // update thee hader and sharers with time wasted
                 $('#history-header').text(total_time_wasted);
                 $('#history-share-twitter').attr('href',
-                    'http://twitter.com/intent/tweet?text=' +
+                    'https://twitter.com/intent/tweet?text=' +
                     total_time_wasted + ' with Centrelink:' +
                     '&via=pleasehold_app' +
                     '&related=rensa_co');
