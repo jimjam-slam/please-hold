@@ -116,7 +116,29 @@ $color-ph-b: #ff821b;
         &:first-child
         {
             margin-left: 0;
-        } 
+        }
+
+        #history-share-linkedin
+        {
+            color: #fff;
+            background-color: #0077b5;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 4px;
+            height: 28px;
+            display: inline-block;
+            padding-left: 10px;
+            margin-left: 0;
+
+            span
+            {
+                vertical-align: bottom;
+                display: inline-block;
+                line-height: 13px;
+            }
+            
+        }
     }
 }
 
