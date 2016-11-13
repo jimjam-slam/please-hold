@@ -242,7 +242,7 @@ var ph = (function()
                 ans_time = $.now() - (1000 * 60 * $('#ans_numpick').val());
                 break;
             case 'dtpick':
-                ans_time = moment($('#ans_dtpick').val()).format('x');
+                ans_time = parseInt(moment($('#ans_dtpick').val()).format('x'));
         }
         if (event.data.answer.a_type !== 'button')
         {
