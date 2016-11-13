@@ -386,7 +386,7 @@ var ph = (function()
                 $('#history-header').text(total_time_wasted);
                 $('#history-share-twitter').attr('href',
                     'https://twitter.com/intent/tweet?text=' +
-                    total_time_wasted + ' with %40Centrelink:' +
+                    total_time_wasted + ' with Centrelink:' +
                     '&via=pleasehold_app' +
                     '&related=rensa_co');
                 $('#history-share-linkedin').attr('href',
@@ -396,7 +396,8 @@ var ph = (function()
                     'summary=Track the time you waste with Centrelink. ' + 'Everything stays on your device.&' +
                     'source=http://rensa.co/please-hold');
                 
-                // style the linkedin sharer
+                // add buttons for deleting (and later exporting) data
+                $('#ph-history').append(
             }
         }
     }
