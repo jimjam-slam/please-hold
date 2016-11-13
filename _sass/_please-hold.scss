@@ -65,6 +65,12 @@ $color-ph-b: #ff821b;
         max-width: 480px;
     }
 
+    #ans_dtpick
+    {
+        /* to prevent overflow on mobile */
+        font-size: 80%;
+    }
+
     #phq-wrapup-post
     {
         display: block;

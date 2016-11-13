@@ -18,7 +18,7 @@
                 },
                 {
                     "a_id":"pha-who-jobprovider",
-                    "a_text":"Job Services Provider",
+                    "a_text":"Jobs Services Prov.",
                     "a_type":"button",
                     "a_colour":"orange",
                     "a_icon":"fa-wrench",
@@ -194,7 +194,7 @@
                 },
                 {
                     "a_id":"pha-call-result-bad",
-                    "a_text":"Terrible! No help at all",
+                    "a_text":"Ugh, terrible!",
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-frown-o",
@@ -282,7 +282,7 @@
                 },
                 {
                     "a_id":"pha-visit-aborted",
-                    "a_text":"Nope, changed my mind",
+                    "a_text":"Changed my mind",
                     "a_type":"button",
                     "a_colour":"yellow",
                     "a_icon":"fa-arrows",
@@ -290,7 +290,7 @@
                 },
                 {
                     "a_id":"pha-visit-closed",
-                    "a_text":"Yeah, but they were closed!",
+                    "a_text":"They were closed!",
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-close",
@@ -354,7 +354,7 @@
                 },
                 {
                     "a_id":"pha-visit-result-bad",
-                    "a_text":"Terrible! No help at all",
+                    "a_text":"Ugh, terrible!",
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-frown-o",
@@ -546,7 +546,7 @@
                 },
                 {
                     "a_id":"pha-other-result-bad",
-                    "a_text":"Terrible! No help at all",
+                    "a_text":"Ugh, terrible",
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-frown-o",
