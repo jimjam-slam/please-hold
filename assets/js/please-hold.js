@@ -167,7 +167,7 @@ var ph = (function()
                     case 'numpick':
                         num_box =
                             '\t<input type="number" name="ans_numpick" ' +
-                            'id="ans_numpick" min="1" max="1440" value="5">\n';
+                            'id="ans_numpick" pattern="[0-9]*" min="1" ' + 'max="1440" value="5">\n';
                         ans_block = 
                             '<button class="btn-' + value.a_colour +
                                 '" id="' + value.a_id + '">\n' +
