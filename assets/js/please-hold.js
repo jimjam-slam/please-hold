@@ -240,11 +240,9 @@ var ph = (function()
                 break;
             case 'numpick':
                 ans_time = $.now() - (1000 * 60 * $('#ans_numpick').val());
-
                 break;
             case 'dtpick':
-                ans_time = new Date($('#ans_dtpick').val().replace('T', ' '))
-                    .getTime();;
+                ans_time = moment($('#ans_dtpick').val()).format('x');
         }
         if (event.data.answer.a_type !== 'button')
         {
