@@ -290,7 +290,8 @@ var ph = (function()
                     '<h2 id="history-header"></h2>');
                 $('#ph-history').append('<ul id="ph-history-list"></ul>');
                 total_time_wasted = 0;
-                $.each(ph.report_history, function(index, value)
+                $($("li").get().reverse())
+                $.each(ph.report_history.reverse(), function(index, value)
                 {
                     // determine fa icon based on action
                     icon = '';
