@@ -385,7 +385,7 @@ var ph = (function()
                 // update thee hader and sharers with time wasted
                 $('#history-header').text(total_time_wasted);
                 $('#history-share-twitter').attr('href',
-                    'https://twitter.com/intent/tweet?text=' +
+                    'http://twitter.com/intent/tweet?text=' +
                     total_time_wasted + ' with Centrelink:' +
                     '&via=pleasehold_app' +
                     '&related=rensa_co');
@@ -395,6 +395,7 @@ var ph = (function()
                     'title=Please Hold%3A ' + total_time_wasted + '&' +
                     'summary=Track the time you waste with Centrelink. ' + 'Everything stays on your device.&' +
                     'source=http://rensa.co/please-hold');
+                $('#history-share-linkedin').attr('target', '_blank');
                 
                 // add button for deleting data, plus event handlers
                 $('#ph-history').append(
