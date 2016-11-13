@@ -1,6 +1,6 @@
 {
     "title":"Please Hold",
-    "version":"1",
+    "version":"2",
     "questions":
     {
         "phq-who":
@@ -77,7 +77,7 @@
 
         "phq-call-dialdt":
         {
-            "q_text":"When did you dial?",
+            "q_text":"When did you dial them?",
             "answers":
             [
                 {
@@ -109,7 +109,7 @@
 
         "phq-call-endhold":
         {
-            "q_text":"Did someone answer the call?",
+            "q_text":"Did someone answer your call?",
             "answers":
             [
                 {
@@ -141,7 +141,7 @@
 
         "phq-call-answerdt":
         {
-            "q_text":"When did you get through?",
+            "q_text":"When did they pick up?",
             "answers":
             [
                 {
@@ -173,7 +173,7 @@
 
         "phq-call-result":
         {
-            "q_text":"How'd things go?",
+            "q_text":"How'd the call go?",
             "answers":
             [
                 {
@@ -205,7 +205,7 @@
 
         "phq-call-enddt":
         {
-            "q_text":"So when were you all done?",
+            "q_text":"So when did the call finish?",
             "answers":
             [
                 {
@@ -237,7 +237,7 @@
 
         "phq-visit-leavedt":
         {
-            "q_text":"When did you leave?",
+            "q_text":"When did you leave for this visit?",
             "answers":
             [
                 {
@@ -333,7 +333,7 @@
 
         "phq-visit-result":
         {
-            "q_text":"How'd things go?",
+            "q_text":"How'd your visit go?",
             "answers":
             [
                 {
@@ -342,7 +342,7 @@
                     "a_type":"button",
                     "a_colour":"green",
                     "a_icon":"fa-smile-o",
-                    "goto_qid":"phq-visit-enddt"
+                    "goto_qid":"phq-visit-startreturndt"
                 },
                 {
                     "a_id":"pha-visit-result-meh",
@@ -350,7 +350,7 @@
                     "a_type":"button",
                     "a_colour":"yellow",
                     "a_icon":"fa-meh-o",
-                    "goto_qid":"phq-visit-enddt"
+                    "goto_qid":"phq-visit-startreturndt"
                 },
                 {
                     "a_id":"pha-visit-result-bad",
@@ -358,6 +358,38 @@
                     "a_type":"button",
                     "a_colour":"red",
                     "a_icon":"fa-frown-o",
+                    "goto_qid":"phq-visit-startreturndt"
+                }
+            ]
+        },
+
+        "phq-visit-startreturndt":
+        {
+            "q_text":"So when did you leave?",
+            "answers":
+            [
+                {
+                    "a_id":"pha-visit-startreturndt-now",
+                    "a_text":"Just now",
+                    "a_type":"justnowbtn",
+                    "a_colour":"purple",
+                    "a_icon":"fa-clock-o",
+                    "goto_qid":"phq-visit-enddt"
+                },
+                {
+                    "a_id":"pha-visit-startreturndt-minsago",
+                    "a_text":"minutes ago",
+                    "a_type":"numpick",
+                    "a_colour":"darkblue",
+                    "a_icon":"fa-building",
+                    "goto_qid":"phq-visit-enddt"
+                },
+                {
+                    "a_id":"pha-visit-startreturndt-earlier",
+                    "a_text":"Another time",
+                    "a_type":"dtpick",
+                    "a_colour":"blue",
+                    "a_icon":"fa-building",
                     "goto_qid":"phq-visit-enddt"
                 }
             ]
@@ -365,7 +397,7 @@
 
         "phq-visit-enddt":
         {
-            "q_text":"So when were you all done?",
+            "q_text":"And when did you make it back?",
             "answers":
             [
                 {
