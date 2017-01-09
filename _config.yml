@@ -15,7 +15,7 @@ default_img: /assets/me.jpg
 # Profile settings
 name: James Goldie
 profile_img: /assets/me.jpg
-profile: "PhD student (climate + health). I build stuff to explain science and help people." 
+profile: "I'm a PhD student (in climate + health); I'm also interested in coding for social change." 
 social:
   facebook: https://facebook.com/rensa
   twitter: https://twitter.com/rensa_co
@@ -23,7 +23,7 @@ social:
   github: http://github.com/rensa
   stack-overflow: http://stackoverflow.com/story/rensa
   flask: https://www.researchgate.net/profile/James_Goldie2
-
+  envelope-o: mailto:me@rensa.co
 
 # Build settings
 include: ["_categories"]
