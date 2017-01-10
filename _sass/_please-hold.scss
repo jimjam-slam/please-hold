@@ -107,6 +107,8 @@ $color-ph-b: #ff821b;
     /* history share button spacing */
     #history-share-btns
     {
+        margin-bottom: 1em;
+
         > *
         {
             vertical-align: top;
@@ -137,8 +139,7 @@ $color-ph-b: #ff821b;
                 vertical-align: bottom;
                 display: inline-block;
                 line-height: 13px;
-            }
-            
+            }  
         }
     }
 

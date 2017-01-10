@@ -305,30 +305,42 @@ var ph = (function()
                 $.each(ph.report_history.reverse(), function(index, value)
                 {
                     // determine fa icon based on action
+                    // TODO - temp text formatting patch here! write a function to change old results properly
                     icon = '';
                     switch (value.what)
                     {
                         case 'Called':
                             icon = 'fa-phone';
+                            value.what = 'calling';
                             break;
                         case 'Visited':
                             icon = 'fa-building';
+                            value.what = 'visiting';
                             break;
                         case 'Did paperwork for':
                             icon = 'fa-paper-plane';
+                            value.what = 'doing paperwork for';
                             break;
                         case 'Did something for':
                             icon = 'fa-thumb-tack';
+                            value.what = 'doing something for';
                             break;
                         default:
                             icon = 'fa-thumb-tack';
                     }
                     tw = value.time_wasted;
-                    total_time_wasted = total_time_wasted + tw; 
+                    total_time_wasted = total_time_wasted + tw;
                     if (tw > 59)
                     {
                         tw = Math.round((tw / 60) * 10) / 10;
-                        tw = tw + ' hours wasted'
+                        if (tw <= 1)
+                        {
+                            tw = '1 hour wasted';
+                        }
+                        else
+                        {
+                            tw = tw + ' hours wasted'
+                        }
                     }
                     else
                     {
@@ -345,13 +357,13 @@ var ph = (function()
                     
                     next_ans =
                         '<li class="ph-history-ans">\n' +
-                            '\t<h3 class="ans-header">\n' +
+                            '\t<p>\n' +
                                 '\t\t<span class="fa fa-lg ' + icon +
                                     '"></span>\n' +
-                                '\t\t' + value.what + ' ' + value.who + '\n' +
-                            '\t</h3>\n' +
-                            '\t<p><em>' + tw + ' ' +
-                                moment(value.when).fromNow() + '</em></p>\n' +
+                                '\t\t<strong>' + tw + '\</strong>\n' +
+                                '\t\t<em>' + value.what + ' ' + value.who +
+                                    ' ' + moment(value.when).fromNow() + ' (' +
+                                    moment(value.when).format('Do MMM YYYY') + ')</em></p>\n' +
                             '\t<p class="report-notes">' + value.notes +
                                 '</p>\n'
                         '</li>'
@@ -455,6 +467,9 @@ var ph = (function()
         });
 
         // format who and what
+        // TODO - I shouldn't be formatting here; rather at the output!
+        // now that I'm switching the output, I need to retroactively change
+        // recorded answer formatting
         switch (ph.answers.report.who)
         {
             case 'pha-who-centrelink':
@@ -472,7 +487,7 @@ var ph = (function()
         switch (ph.answers.report.what)
         {
             case 'pha-mode-call':
-                ph.answers.report.what = 'Called';
+                ph.answers.report.what = 'called';
                 break;
             case 'pha-mode-visit':
                 ph.answers.report.what = 'Visited';
