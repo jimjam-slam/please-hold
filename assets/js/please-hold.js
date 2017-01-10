@@ -487,7 +487,7 @@ var ph = (function()
         switch (ph.answers.report.what)
         {
             case 'pha-mode-call':
-                ph.answers.report.what = 'called';
+                ph.answers.report.what = 'Called';
                 break;
             case 'pha-mode-visit':
                 ph.answers.report.what = 'Visited';
