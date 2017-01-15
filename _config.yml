@@ -15,7 +15,7 @@ default_img: /assets/me.jpg
 # Profile settings
 name: James Goldie
 profile_img: /assets/me.jpg
-profile: "I'm a PhD student (in climate + health); I'm also interested in coding for social change." 
+profile: "PhD student (climate change + health). I also code and build things for fun and for social change." 
 social:
   facebook: https://facebook.com/rensa
   twitter: https://twitter.com/rensa_co
