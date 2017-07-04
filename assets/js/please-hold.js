@@ -456,11 +456,19 @@ var ph = (function()
        stack, and set the quiz back up */
     pub.finish_quiz = function(event)
     {
-        // record notes as answer
-        ph.answers.log[ph.answers.log.length - 1].ans =
-            'Receipt: ' +
-            ph.htmlEncode($('#phq-wrapup-rectext').val()) + '. ' +
-            ph.htmlEncode($('#phq-wrapup-text').val());
+        // record notes as answer. include receipt num if present
+        if (ph.htmlEncode($('#phq-wrapup-rectext').val()) != '')
+        {
+            ph.answers.log[ph.answers.log.length - 1].ans =
+                'Receipt: ' +
+                ph.htmlEncode($('#phq-wrapup-rectext').val()) + '. ' +
+                ph.htmlEncode($('#phq-wrapup-text').val())
+        }
+        else {
+            ph.answers.log[ph.answers.log.length - 1].ans =
+                ph.htmlEncode($('#phq-wrapup-text').val())
+        }
+        
 
         // calc time wasted in mins and start time
         ph.answers.times = ph.answers.times.sort();
