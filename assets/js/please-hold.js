@@ -128,11 +128,19 @@ var ph = (function()
         // TODO - is this phq-wraup? that works differently!
         if (qid === 'phq-wrapup')
         {
-            // create a textbox with the hint, and create a post button
+            // create textboxes with hints, and create a post button
             text_block =
                 '<textarea name="phq-wrapup-text" id="phq-wrapup-text" ' +
                 'cols="40" rows="5" placeholder="' +
                 ph.qdat.questions[qid].q_hint + '"></textarea>';
+            receipt_block = 
+                '<h2 id="rec_text">' +
+                ph.qdat.questions[qid].rec_text +
+                '</h2>' +
+                '<input type="text" name="phq-wrapup-rectext" ' +
+                    'id="phq-wrapup-rectext" ' +
+                    'cols="40" rows="1" placeholder="' +
+                ph.qdat.questions[qid].rec_hint + '"></input>';
             post_btn =
                 '<button class="btn-' + ph.qdat.questions[qid].btn_colour +
                     '" id="phq-wrapup-post">\n' +
@@ -141,6 +149,7 @@ var ph = (function()
                 '\t<p>Done</p>\n' +
                 '</button>'
             $('#ph-quiz').append(text_block);
+            $('#ph-quiz').append(receipt_block);
             $('#ph-quiz').append(post_btn);
 
             // attach post_btn click event
@@ -216,6 +225,12 @@ var ph = (function()
         }
         // make it visible again!
         $('#ph-quiz').fadeToggle('fast');
+
+        // now, for certain questions, reveal the receipt reminder popup
+        if (qid === 'phq-call-result' || qid === 'phq-visit-result')
+        {
+            $('#popup-receipt-reminder-bg').show();
+        }
     }
 
     /* on_answer_click:
@@ -443,6 +458,8 @@ var ph = (function()
     {
         // record notes as answer
         ph.answers.log[ph.answers.log.length - 1].ans =
+            'Receipt: ' +
+            ph.htmlEncode($('#phq-wrapup-rectext').val()) + '. ' +
             ph.htmlEncode($('#phq-wrapup-text').val());
 
         // calc time wasted in mins and start time
@@ -574,4 +591,9 @@ $(document).ready(function()
         $('#ph-loading').css('display', 'block');
         console.error(err);
     }
+
+    // ensure modal popups can be closed
+    $('#popup-receipt-reminder .popup-close').on('click touch', function() {
+        $('#popup-receipt-reminder-bg').hide();
+    });
 });

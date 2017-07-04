@@ -623,6 +623,8 @@
         {
             "q_text":"Anything else you want to remember?",
             "q_hint":"Something you were told or need to do next?",
+            "rec_text":"Got a receipt number?",
+            "rec_hint":"Write it down!",
             "btn_colour":"green",
             "btn_icon":"fa-check"
         }

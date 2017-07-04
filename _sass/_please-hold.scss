@@ -30,7 +30,7 @@ $color-ph-b: #ff821b;
     font-size: 1.5em;
     text-transform: uppercase;
     
-    #q_text
+    #q_text, #rec_text
     {
         margin-bottom: 20px;
     }
@@ -57,12 +57,13 @@ $color-ph-b: #ff821b;
         }
     }
 
-    textarea
+    textarea, input
     {
         font-family: $font-body;
         font-size: 0.75em;
         width: 100%;
         max-width: 480px;
+        margin-bottom: 20px;
     }
 
     #ans_dtpick
@@ -265,6 +266,67 @@ $color-ph-b: #ff821b;
 {
     text-align: center;
     font-style: italic;
+}
+
+
+/* fancy modal popup alert for receipt reminder */
+#popup-receipt-reminder-bg
+{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: none;
+    background-color: rgba(51,51,51,0.5);
+
+    &:target
+    {
+        display: block;
+    }
+}
+
+#popup-receipt-reminder
+{
+    
+    background: $color-ph-b;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.4); 
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+
+    width: 100%;
+    margin: 0 auto;
+    z-index: 100;
+    top: 25%;
+    padding: 3em 1em;
+
+    text-align: center;
+    h2
+    {
+        font-family: $font-header;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+
+    a
+    {
+        display: block;
+        font-size: 1.25em;
+        h3, span
+        {
+            color: #fff;
+            display: inline-block;
+        }
+        h3
+        {
+            font-family: $font-header;
+            text-transform: uppercase;
+            margin: 0;
+        }
+    }
+    
 }
 
 section.legal
