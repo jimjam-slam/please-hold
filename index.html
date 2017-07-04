@@ -26,7 +26,7 @@ my_js: please-hold.js
     {% include project-content.html %}
   </section>
 
-  <section class="profile">
+  <!--<section class="profile">
     <div class="profile__card">
       <div class="profile__img">
         <figure class="absolute-bg" style="background-image: url('{{ site.profile_img | prepend: site.baseurl }}');"></figure>
@@ -43,9 +43,16 @@ my_js: please-hold.js
         {% endif %}
       </div>
     </div>
-  </section>
+  </section>-->
   <section class="legal">
-     <p>Written by <a href="http://rensa.co">James Goldie</a> (Nov 2016). Questions? <a href="https://medium.com/@rensa/welfare-is-a-waste-of-time-485d38c9c6a7">Answers.</a></p>
+     {% if site.email or site.social %}
+        <ul class="footer__social">
+          {% for social in site.social %}
+            <li><a class="fa fa-lg fa-{{ social[0] }}" href="{{ social[1] }}" target="_blank"></a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+     <p><a href="http://rensa.co">James Goldie</a> (2016). Questions? <a href="https://medium.com/@rensa/welfare-is-a-waste-of-time-485d38c9c6a7">Answers.</a></p>
      <p>Mast image is by <a href="https://unsplash.com/photos/71CjSSB83Wo">Pavan Trikutam</a>. HTML encoding and decoding functions from <a href="http://stackoverflow.com/questions/12409314/how-to-escape-special-characters-from-textarea-using-jquery">Stack Overflow</a>. <em>Please Hold</em> uses <a href="https://jquery.com/">jQuery</a> and <a href="http://momentjs.com">Moment.js</a>.</p>
   </section>
 
