@@ -100,9 +100,28 @@ $color-ph-b: #ff821b;
         list-style: none; 
     }
 
+    /* history icons */
     span
     {
+        margin-left: 10px;
         margin-right: 10px;
+
+        /* ... and the delete item icon */
+        &.fa-trash
+        {
+            color: #999;
+        }
+    }
+
+    /* delete all icon */
+    button span
+    {
+        margin-left: 0;
+        margin-right: 10px;
+        &.fa-trash
+        {
+            color: #fff;
+        }
     }
 
     /* history share button spacing */

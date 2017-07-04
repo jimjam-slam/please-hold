@@ -378,7 +378,9 @@ var ph = (function()
                                 '\t\t<strong>' + tw + '\</strong>\n' +
                                 '\t\t<em>' + value.what + ' ' + value.who +
                                     ' ' + moment(value.when).fromNow() + ' (' +
-                                    moment(value.when).format('Do MMM YYYY') + ')</em></p>\n' +
+                                    moment(value.when).format('Do MMM YYYY') + ')</em>' +
+                                    '<span class="fa fa-trash ' +
+                                    'ph-history-delitem"></span></p>\n' +
                             '\t<p class="report-notes">' + value.notes +
                                 '</p>\n'
                         '</li>'
@@ -409,7 +411,7 @@ var ph = (function()
                     }
                 }
                 
-                // update thee hader and sharers with time wasted
+                // update the header and sharers with time wasted
                 $('#history-header').text(total_time_wasted);
                 $('#history-share-twitter').attr('href',
                     'https://twitter.com/intent/tweet?text=' +
