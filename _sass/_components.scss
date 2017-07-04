@@ -343,7 +343,12 @@
 .mast {
   position: relative;
 
-  height: 15em;
+  height: 12.5em;
+
+  @media (max-width: $mq-sm)
+  {
+    height: 8em;
+  }
 
   color: $color-white;
   background-color: $color-black;
@@ -361,7 +366,7 @@
     flex-direction: column;
     justify-content: flex-end;
     height: 100%;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 
     h4
@@ -369,7 +374,13 @@
       font-style: italic;
       font-weight: normal;
       font-size: 1.15em;
-      margin: 0;
+      margin: 0 1.25em;
+
+      @media (max-width: $mq-sm)
+      {
+        font-size: 0.8em;
+        margin: 0 1.56em;
+      }
     }
   }
 
@@ -386,7 +397,7 @@
 
   position: absolute;
   top: 1.25em;
-  left: 1em;
+  left: 1.25em;
   z-index: 99;
 
   display: flex;
@@ -398,9 +409,9 @@
     font-size: 1em;
   }
 
-  @media (min-width: $mq-sm) {
-    left: 2em;
-  }
+  // @media (min-width: $mq-sm) {
+  //   left: 2em;
+  // }
 
   i {
 
