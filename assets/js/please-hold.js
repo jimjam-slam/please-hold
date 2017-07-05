@@ -325,10 +325,12 @@ var ph = (function()
                     switch (value.what)
                     {
                         case 'Called':
+                        case 'calling':
                             icon = 'fa-phone';
                             value.what = 'calling';
                             break;
                         case 'Visited':
+                        case 'visiting':
                             icon = 'fa-building';
                             value.what = 'visiting';
                             break;
@@ -379,14 +381,51 @@ var ph = (function()
                                 '\t\t<em>' + value.what + ' ' + value.who +
                                     ' ' + moment(value.when).fromNow() + ' (' +
                                     moment(value.when).format('Do MMM YYYY') + ')</em>' +
-                                    '<span class="fa fa-trash ' +
-                                    'ph-history-delitem"></span></p>\n' +
+                                    '<span id="ph-history-del-' + index + '" ' +
+                                    'class="fa fa-trash"></span></p>\n' +
                             '\t<p class="report-notes">' + value.notes +
                                 '</p>\n'
                         '</li>'
 
                     // write it
                     $('#ph-history-list').append(next_ans);
+
+                    // attach event handler for item deletetion icon
+                    $('#ph-history-del-' + index).on('touch click', function()
+                    {
+                        // don't get index from id! it's out of date once
+                        // something's been deleted. instead get it live
+                        del_index = $(this).parent().parent().parent().
+                            children().index($(this).parent().parent());
+
+                        console.log('id event handler: ' + index);
+                        console.log('calculated index: ' + del_index);
+                        // del_index = $(this).attr('id').split('-')[3];
+
+                        // delete item from internalStorage
+                        // note to self: splice returns the deleted element
+                        // but alters the shorter array as a side effect! so
+                        // no need to assign it back
+                        ph.report_history.splice(del_index, 1);
+
+                        // fade list element out...
+                        $('#ph-history-del-' + index).parent().parent().
+                            fadeToggle('slow', function()
+                        {
+                            // ... and delete
+                            $('#ph-history-del-' + index).
+                                parent().parent().remove();
+
+                            // sync w/ localStorage
+                            localStorage.report_history =
+                                JSON.stringify(ph.report_history);
+
+                            // re-render history to update indices
+                            // ph.render_history();
+                        });
+
+                    });
+                    
                 });
 
                 // add it up and change the header
@@ -438,14 +477,14 @@ var ph = (function()
                 {
                     $('#history-delete-confirm').fadeToggle('slow', function()
                     {                     
-                        // switch event handler to actual deletion 
+                        // switch event handler to actual deletion (+ reload)
                         $('#history-delete').off('touch click');
                         $('#history-delete').on(
                             'touch click', function()
                         {
                             $('#ph-quiz').empty();
                             localStorage.clear();
-                            ph.start_quiz();
+                            location.reload();
                         });
                     });
                 });
@@ -454,8 +493,8 @@ var ph = (function()
         }
     }
 
-    /* finish_quiz: record the last answer, add these answers to the report_history
-       stack, and set the quiz back up */
+    /* finish_quiz: record the last answer, add these answers to the
+       report_history stack, and set the quiz back up */
     pub.finish_quiz = function(event)
     {
         // record notes as answer. include receipt num if present
