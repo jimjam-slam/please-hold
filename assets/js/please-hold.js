@@ -308,7 +308,7 @@ var ph = (function()
                     '<a class="twitter-share-button" ' +
                     'id="history-share-twitter" data-size="large">Tweet</a>');
                 $('#history-share-btns').append(
-                    '<div class="fb-share-button" data-href="http://rensa.co/please-hold" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Frensa.co%2Fplease-hold&amp;src=sdkpreparse">Share</a></div>');
+                    '<div class="fb-share-button" data-href="https://rensa.co/please-hold" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Frensa.co%2Fplease-hold&amp;src=sdkpreparse">Share</a></div>');
                 $('#history-share-btns').append(
                     '<a id="history-share-linkedin">' +
                     '<span class="fa fa-linkedin-square"></span><span>Share</span></a>');
@@ -459,10 +459,10 @@ var ph = (function()
                     '&related=rensa_co');
                 $('#history-share-linkedin').attr('href',
                     'https://www.linkedin.com/shareArticle?' +
-                    'url=http://rensa.co/please-hold&mini=true&' +
+                    'url=https://rensa.co/please-hold&mini=true&' +
                     'title=Please Hold%3A ' + total_time_wasted + '&' +
                     'summary=Track the time you waste with Centrelink. ' + 'Everything stays on your device.&' +
-                    'source=http://rensa.co/please-hold');
+                    'source=https://rensa.co/please-hold');
                 $('#history-share-linkedin').attr('target', '_blank');
                 
                 // add button for deleting data, plus event handlers
